@@ -23,7 +23,9 @@
               "testing/tsconfig.libs.json",
               "testing/tsconfig.libs.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
@@ -50,7 +52,9 @@
               "testing/tsconfig.xplat.json",
               "testing/tsconfig.xplat.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
@@ -140,7 +144,10 @@
               "apps/web-tasks/tsconfig.app.json",
               "apps/web-tasks/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/web-tasks/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/web-tasks/**/*"
+            ]
           }
         },
         "test": {
@@ -173,8 +180,58 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/web-tasks-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/web-tasks-e2e/**/*"]
+            "tsConfig": [
+              "apps/web-tasks-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/web-tasks-e2e/**/*"
+            ]
+          }
+        }
+      }
+    },
+    "nativescript-tasks": {
+      "root": "apps/nativescript-tasks/",
+      "sourceRoot": "apps/nativescript-tasks/src",
+      "projectType": "application",
+      "prefix": "nuvious",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
+      "architect": {
+        "ios": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              "ns debug ios --no-hmr"
+            ],
+            "cwd": "apps/nativescript-tasks",
+            "parallel": false
+          }
+        },
+        "android": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              "ns debug android --no-hmr"
+            ],
+            "cwd": "apps/nativescript-tasks",
+            "parallel": false
+          }
+        },
+        "clean": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              "npx rimraf hooks node_modules platforms package-lock.json",
+              "npm i",
+              "npx rimraf package-lock.json"
+            ],
+            "cwd": "apps/nativescript-tasks",
+            "parallel": false
           }
         }
       }

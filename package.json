@@ -25,8 +25,14 @@
     "dep-graph": "nx dep-graph",
     "help": "nx help",
     "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
-    "clean": "npx rimraf hooks node_modules package-lock.json && npm i",
-    "start.web.tasks": "nx serve web-tasks"
+    "clean": "npx rimraf -- hooks node_modules package-lock.json && npm i",
+    "start.web.tasks": "nx serve web-tasks",
+    "debug.nativescript.tasks.ios": "cd apps/nativescript-tasks && ns debug ios --no-hmr --emulator",
+    "debug.nativescript.tasks.android": "cd apps/nativescript-tasks && ns debug android --no-hmr --emulator",
+    "run.nativescript.tasks.ios": "cd apps/nativescript-tasks && ns run ios --no-hmr",
+    "run.nativescript.tasks.android": "cd apps/nativescript-tasks && ns run android --no-hmr",
+    "clean.nativescript.tasks": "cd apps/nativescript-tasks && npx rimraf -- hooks node_modules platforms package-lock.json && npm i && npx rimraf -- package-lock.json",
+    "clean.all": "npm run clean && npm run clean.nativescript.tasks"
   },
   "private": true,
   "dependencies": {
@@ -43,7 +49,11 @@
     "zone.js": "~0.11.1",
     "@nuvious/scss": "file:libs/scss",
     "@ngx-translate/core": "~13.0.0",
-    "@ngx-translate/http-loader": "~6.0.0"
+    "@ngx-translate/http-loader": "~6.0.0",
+    "@nativescript/core": "~7.0.0",
+    "nativescript-theme-core": "^1.0.4",
+    "@nativescript/angular": "~10.1.0",
+    "nativescript-ngx-fonticon": "~7.0.0"
   },
   "devDependencies": {
     "@nrwl/workspace": "10.2.1",
@@ -70,7 +80,12 @@
     "jest": "26.2.2",
     "ts-jest": "26.1.4",
     "cypress": "^4.1.0",
-    "@nrwl/cypress": "10.2.1"
+    "@nrwl/cypress": "10.2.1",
+    "@nstudio/nativescript-angular": "*",
+    "@nstudio/nativescript": "*",
+    "node-sass": "^4.12.0",
+    "@nativescript/types": "~7.0.0",
+    "@ngtools/webpack": "~10.1.0"
   },
   "xplat": {
     "prefix": "nuvious",

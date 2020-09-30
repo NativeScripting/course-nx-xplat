@@ -10,16 +10,40 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["es2017", "dom"],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nuvious/*": ["libs/*"],
-      "@nuvious/web": ["xplat/web/index.ts"],
-      "@nuvious/web/*": ["xplat/web/*"]
+      "@nuvious/*": [
+        "libs/*"
+      ],
+      "@nuvious/web": [
+        "xplat/web/index.ts"
+      ],
+      "@nuvious/web/*": [
+        "xplat/web/*"
+      ],
+      "@nuvious/nativescript": [
+        "xplat/nativescript/index.ts"
+      ],
+      "@nuvious/nativescript/*": [
+        "xplat/nativescript/*"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp",
+    "apps/nativescript-*"
+  ],
+  "includes": [
+    "xplat/**/*.{ios,android}.ts"
+  ]
 }

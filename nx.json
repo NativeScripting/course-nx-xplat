@@ -17,7 +17,12 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ]
       }
     }
   },
@@ -33,7 +38,12 @@
     },
     "web-tasks-e2e": {
       "tags": [],
-      "implicitDependencies": ["web-tasks"]
+      "implicitDependencies": [
+        "web-tasks"
+      ]
+    },
+    "nativescript-tasks": {
+      "tags": []
     }
   }
 }
