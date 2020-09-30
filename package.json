@@ -23,10 +23,28 @@
     "update": "nx migrate latest",
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
-    "help": "nx help"
+    "help": "nx help",
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
+    "clean": "npx rimraf hooks node_modules package-lock.json && npm i",
+    "start.web.tasks": "nx serve web-tasks"
   },
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "@angular/animations": "~10.1.0",
+    "@angular/common": "~10.1.0",
+    "@angular/compiler": "~10.1.0",
+    "@angular/core": "~10.1.0",
+    "@angular/forms": "~10.1.0",
+    "@angular/platform-browser": "~10.1.0",
+    "@angular/platform-browser-dynamic": "~10.1.0",
+    "@angular/router": "~10.1.0",
+    "core-js": "^3.6.5",
+    "rxjs": "~6.6.0",
+    "zone.js": "~0.11.1",
+    "@nuvious/scss": "file:libs/scss",
+    "@ngx-translate/core": "~13.0.0",
+    "@ngx-translate/http-loader": "~6.0.0"
+  },
   "devDependencies": {
     "@nrwl/workspace": "10.2.1",
     "@nstudio/xplat": "^10.2.0",
@@ -36,6 +54,26 @@
     "prettier": "2.0.4",
     "ts-node": "~7.0.0",
     "tslint": "~6.0.0",
-    "typescript": "~3.9.3"
+    "typescript": "~3.9.3",
+    "@nstudio/angular": "*",
+    "@nstudio/web-angular": "*",
+    "@nstudio/web": "*",
+    "@nrwl/angular": "~10.2.0",
+    "@angular/compiler-cli": "~10.1.0",
+    "@angular/language-service": "~10.1.0",
+    "@angular-devkit/build-angular": "~0.1001.0",
+    "codelyzer": "~6.0.0",
+    "@types/jest": "~25.1.4",
+    "jest-jasmine2": "~25.2.0",
+    "jest-preset-angular": "~8.1.2",
+    "@nrwl/jest": "10.2.1",
+    "jest": "26.2.2",
+    "ts-jest": "26.1.4",
+    "cypress": "^4.1.0",
+    "@nrwl/cypress": "10.2.1"
+  },
+  "xplat": {
+    "prefix": "nuvious",
+    "framework": "angular"
   }
 }

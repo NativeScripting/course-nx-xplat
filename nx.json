@@ -21,5 +21,19 @@
       }
     }
   },
-  "projects": {}
+  "projects": {
+    "libs": {
+      "tags": []
+    },
+    "xplat": {
+      "tags": []
+    },
+    "web-tasks": {
+      "tags": []
+    },
+    "web-tasks-e2e": {
+      "tags": [],
+      "implicitDependencies": ["web-tasks"]
+    }
+  }
 }

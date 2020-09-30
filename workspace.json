@@ -1,7 +1,195 @@
 {
   "version": 1,
-  "projects": {},
+  "projects": {
+    "libs": {
+      "root": "libs",
+      "sourceRoot": "libs",
+      "projectType": "library",
+      "prefix": "nuvious",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "testing/jest.libs.config.js",
+            "tsConfig": "testing/tsconfig.libs.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "testing/test-setup.ts"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "testing/tsconfig.libs.json",
+              "testing/tsconfig.libs.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    },
+    "xplat": {
+      "root": "xplat",
+      "sourceRoot": "xplat",
+      "projectType": "library",
+      "prefix": "nuvious",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "testing/jest.xplat.config.js",
+            "tsConfig": "testing/tsconfig.xplat.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "testing/test-setup.ts"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "testing/tsconfig.xplat.json",
+              "testing/tsconfig.xplat.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    },
+    "web-tasks": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/web-tasks",
+      "sourceRoot": "apps/web-tasks/src",
+      "prefix": "nuvious",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/web-tasks",
+            "index": "apps/web-tasks/src/index.html",
+            "main": "apps/web-tasks/src/main.ts",
+            "polyfills": "apps/web-tasks/src/polyfills.ts",
+            "tsConfig": "apps/web-tasks/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/web-tasks/src/favicon.ico",
+              "apps/web-tasks/src/assets"
+            ],
+            "styles": [
+              "xplat/web/scss/_index.scss",
+              "apps/web-tasks/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/web-tasks/src/environments/environment.ts",
+                  "with": "apps/web-tasks/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "web-tasks:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "web-tasks:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "web-tasks:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/web-tasks/tsconfig.app.json",
+              "apps/web-tasks/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/web-tasks/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/web-tasks/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "web-tasks-e2e": {
+      "root": "apps/web-tasks-e2e",
+      "sourceRoot": "apps/web-tasks-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/web-tasks-e2e/cypress.json",
+            "tsConfig": "apps/web-tasks-e2e/tsconfig.e2e.json",
+            "devServerTarget": "web-tasks:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "web-tasks:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/web-tasks-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/web-tasks-e2e/**/*"]
+          }
+        }
+      }
+    }
+  },
   "cli": {
     "defaultCollection": "@nstudio/xplat"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
   }
 }

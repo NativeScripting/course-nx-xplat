@@ -15,7 +15,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nuvious/*": ["libs/*"],
+      "@nuvious/web": ["xplat/web/index.ts"],
+      "@nuvious/web/*": ["xplat/web/*"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
