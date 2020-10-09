@@ -3,6 +3,8 @@ import { Directive, Input, Output, EventEmitter } from '@angular/core';
 // libs
 import { BaseComponent } from '@nuvious/core/base';
 
+import { format } from 'date-fns';
+
 @Directive()
 export abstract class HeaderBaseComponent extends BaseComponent {
   /**
@@ -12,4 +14,8 @@ export abstract class HeaderBaseComponent extends BaseComponent {
   @Input() title: string = 'DEFAULT';
   @Input() rightButton: string;
   @Output() tappedRight: EventEmitter<boolean> = new EventEmitter();
+
+  get myDate() {
+    return format(new Date(), 'qo');
+  }
 }

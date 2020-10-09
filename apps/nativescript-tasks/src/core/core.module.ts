@@ -4,6 +4,6 @@ import { NgModule } from '@angular/core';
 import { NuviousCoreModule } from '@nuvious/nativescript';
 
 @NgModule({
-  imports: [NuviousCoreModule]
+  imports: [NuviousCoreModule],
 })
 export class CoreModule {}
