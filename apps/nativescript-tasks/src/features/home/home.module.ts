@@ -5,6 +5,7 @@ import {
 } from '@angular/core';
 import { Routes } from '@angular/router';
 import { NativeScriptRouterModule } from '@nativescript/angular';
+import { TasklistModuleNativeScript } from '@nuvious/nativescript';
 
 import { SharedModule } from '../shared/shared.module';
 import { HomeComponent } from './components';
@@ -17,7 +18,7 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [SharedModule, NativeScriptRouterModule.forChild(routes)],
+  imports: [SharedModule, TasklistModuleNativeScript, NativeScriptRouterModule.forChild(routes)],
   declarations: [HomeComponent],
   exports: [HomeComponent],
   schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
