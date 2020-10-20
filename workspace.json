@@ -1,6 +1,64 @@
 {
   "version": 1,
   "projects": {
+    "nativescript-tasks": {
+      "root": "apps/nativescript-tasks/",
+      "sourceRoot": "apps/nativescript-tasks/src",
+      "projectType": "application",
+      "prefix": "nuvious",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
+      "architect": {
+        "default": {
+          "builder": "@nrwl/workspace:run-commands",
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "libs/core/environments/environment.ts",
+                  "with": "libs/core/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "ios": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              "ns debug ios --no-hmr --env.configuration={args.configuration} --env.projectName=nativescript-tasks"
+            ],
+            "cwd": "apps/nativescript-tasks",
+            "parallel": false
+          }
+        },
+        "android": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              "ns debug android --no-hmr --env.configuration={args.configuration} --env.projectName=nativescript-tasks"
+            ],
+            "cwd": "apps/nativescript-tasks",
+            "parallel": false
+          }
+        },
+        "clean": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              "ns clean",
+              "npm i",
+              "npx rimraf package-lock.json"
+            ],
+            "cwd": "apps/nativescript-tasks",
+            "parallel": false
+          }
+        }
+      }
+    },
     "libs": {
       "root": "libs",
       "sourceRoot": "libs",
@@ -142,7 +200,8 @@
           "options": {
             "tsConfig": [
               "apps/web-tasks/tsconfig.app.json",
-              "apps/web-tasks/tsconfig.spec.json"
+              "apps/web-tasks/tsconfig.spec.json",
+              "apps/web-tasks/tsconfig.editor.json"
             ],
             "exclude": [
               "**/node_modules/**",
@@ -187,51 +246,6 @@
               "**/node_modules/**",
               "!apps/web-tasks-e2e/**/*"
             ]
-          }
-        }
-      }
-    },
-    "nativescript-tasks": {
-      "root": "apps/nativescript-tasks/",
-      "sourceRoot": "apps/nativescript-tasks/src",
-      "projectType": "application",
-      "prefix": "nuvious",
-      "schematics": {
-        "@schematics/angular:component": {
-          "styleext": "scss"
-        }
-      },
-      "architect": {
-        "ios": {
-          "builder": "@nrwl/workspace:run-commands",
-          "options": {
-            "commands": [
-              "ns debug ios --no-hmr"
-            ],
-            "cwd": "apps/nativescript-tasks",
-            "parallel": false
-          }
-        },
-        "android": {
-          "builder": "@nrwl/workspace:run-commands",
-          "options": {
-            "commands": [
-              "ns debug android --no-hmr"
-            ],
-            "cwd": "apps/nativescript-tasks",
-            "parallel": false
-          }
-        },
-        "clean": {
-          "builder": "@nrwl/workspace:run-commands",
-          "options": {
-            "commands": [
-              "npx rimraf hooks node_modules platforms package-lock.json",
-              "npm i",
-              "npx rimraf package-lock.json"
-            ],
-            "cwd": "apps/nativescript-tasks",
-            "parallel": false
           }
         }
       }
