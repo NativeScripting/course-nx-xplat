@@ -28,6 +28,8 @@
     "clean.nativescript.tasks": "cd apps/nativescript-tasks && ns clean && npm i && npx rimraf -- package-lock.json",
     "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "start.web.tasks": "nx serve web-tasks",
+    "start.web.tasks.dev": "nx serve web-tasks --configuration=dev",
+    "start.web.tasks.qa": "nx serve web-tasks --configuration=qa",
     "start.nativescript.tasks.ios": "nx run nativescript-tasks:ios"
   },
   "private": true,

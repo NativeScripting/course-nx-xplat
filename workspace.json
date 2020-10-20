@@ -175,6 +175,22 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "dev": {
+              "fileReplacements": [
+                {
+                  "replace": "libs/core/environments/environment.ts",
+                  "with": "libs/core/environments/environment.dev.ts"
+                }
+              ]
+            },
+            "qa": {
+              "fileReplacements": [
+                {
+                  "replace": "libs/core/environments/environment.ts",
+                  "with": "libs/core/environments/environment.qa.ts"
+                }
+              ]
             }
           }
         },
@@ -186,6 +202,12 @@
           "configurations": {
             "production": {
               "browserTarget": "web-tasks:build:production"
+            },
+            "dev": {
+              "browserTarget": "web-tasks:build:dev"
+            },
+            "qa": {
+              "browserTarget": "web-tasks:build:qa"
             }
           }
         },
