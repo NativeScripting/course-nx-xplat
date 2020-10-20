@@ -8,4 +8,4 @@ import { TasklistComponent } from './components';
   declarations: [TasklistComponent],
   exports: [TasklistComponent],
 })
-export class TasklistModule {}
+export class TasklistModuleWeb {}

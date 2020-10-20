@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { TasklistModuleWeb } from '@nuvious/web';
 
 import { SharedModule } from '../shared/shared.module';
 import { HomeComponent } from './components';
@@ -12,7 +13,7 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [SharedModule, RouterModule.forChild(routes)],
+  imports: [SharedModule, TasklistModuleWeb, RouterModule.forChild(routes)],
   declarations: [HomeComponent],
   exports: [HomeComponent],
 })

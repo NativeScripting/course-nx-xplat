@@ -1,1 +1,7 @@
-<div>{{ text }}</div>
+<div>
+    <ul>
+        <li *ngFor="let task of tasks">
+            <span>{{ task.title }}</span>
+        </li>
+    </ul>
+</div>
