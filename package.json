@@ -30,7 +30,9 @@
     "start.web.tasks": "nx serve web-tasks",
     "start.web.tasks.dev": "nx serve web-tasks --configuration=dev",
     "start.web.tasks.qa": "nx serve web-tasks --configuration=qa",
-    "start.nativescript.tasks.ios": "nx run nativescript-tasks:ios"
+    "start.nativescript.tasks.ios": "nx run nativescript-tasks:ios",
+    "start.nativescript.tasks.ios.dev": "nx run nativescript-tasks:ios --args='--configuration=dev'",
+    "start.nativescript.tasks.ios.qa": "nx run nativescript-tasks:ios --args='--configuration=qa'"
   },
   "private": true,
   "dependencies": {
