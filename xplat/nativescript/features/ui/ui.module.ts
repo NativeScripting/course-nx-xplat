@@ -4,7 +4,7 @@ import { NativeScriptCommonModule, NativeScriptFormsModule, NativeScriptRouterMo
 
 import { TNSFontIconModule } from 'nativescript-ngx-fonticon';
 import { UISharedModule } from '@nuvious/features';
-import { HeaderComponent } from './components';
+import { HeaderComponent, LoginComponent } from './components';
 
 @NgModule({
   imports: [
@@ -15,7 +15,8 @@ import { HeaderComponent } from './components';
     UISharedModule
   ],
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    LoginComponent
   ],
   exports: [
     NativeScriptCommonModule,
@@ -23,7 +24,8 @@ import { HeaderComponent } from './components';
     NativeScriptRouterModule,
     TNSFontIconModule,
     UISharedModule,
-    HeaderComponent
+    HeaderComponent,
+    LoginComponent
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })

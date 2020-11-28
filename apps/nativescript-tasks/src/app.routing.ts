@@ -12,16 +12,23 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: '/home',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'home',
-    loadChildren: () => 
-      import('./features/home/home.module').then(m => m.HomeModule)
-  }
+    loadChildren: () =>
+      import('./features/home/home.module').then((m) => m.HomeModule),
+  },
+  {
+    path: 'page-login',
+    loadChildren: () =>
+      import('./features/page-login/page-login.module').then(
+        (m) => m.PageLoginModule
+      ),
+  },
 ];
 
 @NgModule({
-  imports: [SharedModule, NativeScriptRouterModule.forRoot(routes)]
+  imports: [SharedModule, NativeScriptRouterModule.forRoot(routes)],
 })
 export class AppRoutingModule {}

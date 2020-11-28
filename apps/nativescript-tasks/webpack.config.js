@@ -37,6 +37,9 @@ module.exports = env => {
   if (!platform) {
     throw new Error('You need to provide a target platform!');
   }
+  if (platform === "android") {
+    appComponents.push("nativescript-auth0/android/provider/redirectActivity");
+  }
 
   const AngularCompilerPlugin = getAngularCompilerPlugin(platform);
   const projectRoot = __dirname;

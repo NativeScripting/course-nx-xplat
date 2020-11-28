@@ -3,4 +3,11 @@ export interface IEnvironmentConfiguration {
     production: boolean;
     api_url: string;
     baseRoutePath: string;
+    auth0: {
+      domain: string;
+      clientId: string;
+      redirectUri: string;
+      scope: string;
+      responseType: string;
+    }
 }

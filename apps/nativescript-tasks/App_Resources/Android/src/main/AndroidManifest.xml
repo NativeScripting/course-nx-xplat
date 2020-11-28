@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="__PACKAGE__"
 	android:versionCode="1"
-	android:versionName="1.0">
+	android:versionName="1.0"
+  xmlns:tools="http://schemas.android.com/tools">
 
 	<supports-screens
 		android:smallScreens="true"
@@ -35,5 +36,22 @@
 			</intent-filter>
 		</activity>
 		<activity android:name="com.tns.ErrorReportActivity"/>
+
+    <!-- Auth0 -->
+		<activity
+				android:name="org.nativescript.auth0.RedirectActivity"
+				tools:node="replace">
+				<intent-filter>
+						<action android:name="android.intent.action.VIEW" />
+
+						<category android:name="android.intent.category.DEFAULT" />
+						<category android:name="android.intent.category.BROWSABLE" />
+
+						<data
+								android:host="nativescriptnx.us.auth0.com"
+								android:pathPrefix="/android/${applicationId}/callback"
+								android:scheme="https" />
+				</intent-filter>
+		</activity>
 	</application>
 </manifest>
