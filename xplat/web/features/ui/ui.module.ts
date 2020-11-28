@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 
 // libs
 import { UISharedModule } from '@nuvious/features';
-import { HeaderComponent } from './components';
+import { HeaderComponent, LoginComponent } from './components';
 
 @NgModule({
   imports: [
@@ -15,7 +15,7 @@ import { HeaderComponent } from './components';
     ReactiveFormsModule,
     UISharedModule,
   ],
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, LoginComponent],
   exports: [
     CommonModule,
     RouterModule,
@@ -23,6 +23,7 @@ import { HeaderComponent } from './components';
     ReactiveFormsModule,
     UISharedModule,
     HeaderComponent,
+    LoginComponent
   ],
 })
 export class UIModule {}

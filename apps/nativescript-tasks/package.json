@@ -22,6 +22,7 @@
     "@ngx-translate/core": "file:../../node_modules/@ngx-translate/core",
     "@nuvious/scss": "file:../../libs/scss",
     "@nuvious/nativescript-scss": "file:../../xplat/nativescript/scss",
+    "nativescript-auth0": "file:../../node_modules/nativescript-auth0",
     "nativescript-ngx-fonticon": "file:../../node_modules/nativescript-ngx-fonticon",
     "nativescript-theme-core": "file:../../node_modules/nativescript-theme-core",
     "rxjs": "file:../../node_modules/rxjs",
@@ -29,7 +30,8 @@
   },
   "devDependencies": {
     "@angular/compiler-cli": "file:../../node_modules/@angular/compiler-cli",
-    "@nativescript/ios": "7.0.0",
+    "@nativescript/android": "7.0.1",
+    "@nativescript/ios": "7.0.6",
     "@nativescript/webpack": "~3.0.0",
     "@ngtools/webpack": "file:../../node_modules/@ngtools/webpack",
     "typescript": "file:../../node_modules/typescript"
