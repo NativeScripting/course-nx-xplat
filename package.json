@@ -24,7 +24,7 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "clean": "npx rimraf hooks node_modules package-lock.json && npm i",
+    "clean": "npx rimraf -- hooks node_modules package-lock.json && npm i",
     "clean.nativescript.tasks": "cd apps/nativescript-tasks && ns clean && npm i && npx rimraf -- package-lock.json",
     "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "start.web.tasks": "nx serve web-tasks",
@@ -32,7 +32,10 @@
     "start.web.tasks.qa": "nx serve web-tasks --configuration=qa",
     "start.nativescript.tasks.ios": "nx run nativescript-tasks:ios",
     "start.nativescript.tasks.ios.dev": "nx run nativescript-tasks:ios --args='--configuration=dev'",
-    "start.nativescript.tasks.ios.qa": "nx run nativescript-tasks:ios --args='--configuration=qa'"
+    "start.nativescript.tasks.ios.qa": "nx run nativescript-tasks:ios --args='--configuration=qa'",
+    "start.nativescript.styleguide.ios": "cd apps/nativescript-styleguide && ns debug ios --no-hmr --emulator",
+    "start.nativescript.styleguide.android": "cd apps/nativescript-styleguide && ns debug android --no-hmr --emulator",
+    "clean.nativescript.styleguide": "cd apps/nativescript-styleguide && npx rimraf -- hooks node_modules platforms package-lock.json && npm i && npx rimraf -- package-lock.json"
   },
   "private": true,
   "dependencies": {
@@ -79,7 +82,7 @@
     "jest": "26.2.2",
     "jest-jasmine2": "~25.2.0",
     "jest-preset-angular": "~8.1.2",
-    "node-sass": "^4.14.0",
+    "node-sass": "^4.12.0",
     "prettier": "2.0.4",
     "ts-jest": "26.4.0",
     "ts-node": "~7.0.0",
@@ -89,7 +92,7 @@
     "@nrwl/cypress": "10.3.1"
   },
   "xplat": {
-    "prefix": "nuvious",
+    "prefix": "abc",
     "framework": "angular"
   }
 }

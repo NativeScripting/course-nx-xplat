@@ -49,6 +49,32 @@
             ],
             "cwd": "apps/nativescript-tasks",
             "parallel": false
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "libs/core/environments/environment.ts",
+                  "with": "libs/core/environments/environment.prod.ts"
+                }
+              ]
+            },
+            "dev": {
+              "fileReplacements": [
+                {
+                  "replace": "libs/core/environments/environment.ts",
+                  "with": "libs/core/environments/environment.dev.ts"
+                }
+              ]
+            },
+            "qa": {
+              "fileReplacements": [
+                {
+                  "replace": "libs/core/environments/environment.ts",
+                  "with": "libs/core/environments/environment.qa.ts"
+                }
+              ]
+            }
           }
         },
         "android": {
@@ -71,6 +97,17 @@
             ],
             "cwd": "apps/nativescript-tasks",
             "parallel": false
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/nativescript-tasks/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
@@ -284,6 +321,51 @@
               "**/node_modules/**",
               "!apps/web-tasks-e2e/**/*"
             ]
+          }
+        }
+      }
+    },
+    "nativescript-styleguide": {
+      "root": "apps/nativescript-styleguide/",
+      "sourceRoot": "apps/nativescript-styleguide/src",
+      "projectType": "application",
+      "prefix": "abc",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
+      "architect": {
+        "ios": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              "ns debug ios --no-hmr"
+            ],
+            "cwd": "apps/nativescript-styleguide",
+            "parallel": false
+          }
+        },
+        "android": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              "ns debug android --no-hmr"
+            ],
+            "cwd": "apps/nativescript-styleguide",
+            "parallel": false
+          }
+        },
+        "clean": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              "npx rimraf hooks node_modules platforms package-lock.json",
+              "npm i",
+              "npx rimraf package-lock.json"
+            ],
+            "cwd": "apps/nativescript-styleguide",
+            "parallel": false
           }
         }
       }

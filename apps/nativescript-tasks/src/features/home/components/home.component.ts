@@ -6,7 +6,7 @@ import { ENVIRONMENT_CONFIGURATION_TOKEN } from '@nuvious/core/environments/envi
 
 @Component({
   moduleId: module.id,
-  selector: 'nuvious-home',
+  selector: "nuvious-home",
   templateUrl: './home.component.html'
 })
 export class HomeComponent extends BaseComponent {
@@ -17,7 +17,7 @@ export class HomeComponent extends BaseComponent {
     @Inject(ENVIRONMENT_CONFIGURATION_TOKEN)
     protected env: IEnvironmentConfiguration
     ){
-    super();
+    super()
   }
 
   ngOnInit() {

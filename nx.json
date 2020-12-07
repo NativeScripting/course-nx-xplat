@@ -44,6 +44,9 @@
     },
     "nativescript-tasks": {
       "tags": []
+    },
+    "nativescript-styleguide": {
+      "tags": []
     }
   }
 }
